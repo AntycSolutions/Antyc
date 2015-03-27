@@ -1,5 +1,5 @@
 """
-Django settings for antyc project.
+Django settings for antyc_website project.
 """
 
 # Build paths inside the project like this: os.path.join(BASE_DIR, ...)
@@ -26,6 +26,7 @@ INSTALLED_APPS = (
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
+    'antyc',
 )
 
 MIDDLEWARE_CLASSES = (
@@ -37,9 +38,9 @@ MIDDLEWARE_CLASSES = (
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
 )
 
-ROOT_URLCONF = 'antyc.urls'
+ROOT_URLCONF = 'antyc_website.urls'
 
-WSGI_APPLICATION = 'antyc.wsgi.application'
+WSGI_APPLICATION = 'antyc_website.wsgi.application'
 
 # Databases
 DATABASES = {}
@@ -64,10 +65,6 @@ MEDIA_ROOT = BASE_DIR + '/media/'
 
 LOGIN_REDIRECT_URL = '/'
 LOGIN_URL = '/login/'
-
-TEMPLATE_DIRS = (
-    os.path.join(BASE_DIR, 'templates'),
-)
 
 # Email
 SERVER_EMAIL = 'Antyc Solutions <root@pantyc.ca>'

@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+{% load static %}
+
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="author" content="Antyc Solutions">
+
+    <title>Antyc Solutions {% block title %}{% endblock %}</title>
+
+    <!-- favicon -->
+<!--     <link href="{% static 'images/PerfectArchLogo.jpg' %}" rel="icon" type="image/x-icon">
+    <link href="{% static 'images/PerfectArchLogo.jpg' %}" rel="shortcut icon" type="image/x-icon"> -->
+
+    <!-- Bootswatch Cerulean Bootstrap -->
+    <link href="//maxcdn.bootstrapcdn.com/bootswatch/3.3.2/simplex/bootstrap.min.css" rel="stylesheet">
+
+    <!-- jQuery UI Smoothness -->
+    <link rel="stylesheet" href="http://code.jquery.com/ui/1.11.2/themes/smoothness/jquery-ui.css" />
+
+    <link href="{% static 'css/sticky-footer.css' %}" rel="stylesheet">
+
+    <!-- jQuery (required here because of django-bootstrap3-datetimepicker) -->
+    <script src="http://code.jquery.com/jquery-2.1.3.min.js"></script>
+    {% block extrahead %}{% endblock %}
+</head>
+
+<body>
+    {% include 'antyc/navbar.html' %}
+    <div class="container">
+        {% block content %}{% endblock %}
+    </div>
+    {% include 'antyc/footer.html' %}
+    <!-- Scripts load last -->
+    <!-- jQuery UI -->
+    <script src="http://code.jquery.com/ui/1.11.2/jquery-ui.min.js"></script>
+    <!-- Bootstrap -->
+    <script src="//maxcdn.bootstrapcdn.com/bootstrap/3.3.2/js/bootstrap.min.js"></script>
+    {% block scripts %}{% endblock %}
+</body>
+</html>

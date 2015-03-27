@@ -1,5 +1,5 @@
 """
-WSGI config for antyc project.
+WSGI config for antyc_website project.
 
 It exposes the WSGI callable as a module-level variable named ``application``.
 """
@@ -9,7 +9,7 @@ import sys
 base_dir = os.path.dirname(os.path.dirname(__file__))
 sys.path.append(base_dir)
 
-os.environ.setdefault("DJANGO_SETTINGS_MODULE", "antyc.settings")
+os.environ.setdefault("DJANGO_SETTINGS_MODULE", "antyc_website.settings")
 
 from django.core.wsgi import get_wsgi_application
 application = get_wsgi_application()
