@@ -4,8 +4,26 @@
 
 {% block title %} - Welcome{% endblock %}
 
-{% block content %}
+{% block extrahead %}
+<style>
+.img-circle-blue {
+    display: inline-block;
+    border-radius: 50%;
+    background-color: #007bb6; /* LinkedIn Blue */
+    width: 36px;
+    height: 36px;
+}
+.img-circle-gray {
+    display: inline-block;
+    border-radius: 50%;
+    background-color: lightgray;
+    width: 36px;
+    height: 36px;
+}
+</style>
+{% endblock %}
 
+{% block content %}
 <div class="jumbotron" style="text-align: center;">
     <h1>Antyc Solutions</h1>
     <h2>Edmonton based Software Development</h2>
@@ -13,21 +31,31 @@
     <br />
     <p>Andrew Charles</p>
     <p>
-        <span class="glyphicon glyphicon-envelope" aria-hidden="true"></span>
-        <span class="sr-only">Email:</span>
+        <span class="img-circle-gray">
+            <span class="glyphicon glyphicon-envelope" aria-hidden="true" style="vertical-align: middle;"></span>
+            <span class="sr-only">Email:</span>
+        </span>
         <a href="mailto:andrew.charles@antyc.ca">andrew.charles@antyc.ca</a>
     </p>
     <p>
+        <span class="img-circle-blue">
+            <i class="fa fa-linkedin" style="color: white;"></i>
+        </span>
         <a href="http://ca.linkedin.com/in/andrewbcharles">LinkedIn Profile</a>
     </p>
     <br />
     <p>Tyler Davidson</p>
     <p>
-        <span class="glyphicon glyphicon-envelope" aria-hidden="true"></span>
-        <span class="sr-only">Email:</span>
+        <span class="img-circle-gray">
+            <span class="glyphicon glyphicon-envelope" aria-hidden="true" style="vertical-align: middle;"></span>
+            <span class="sr-only">Email:</span>
+        </span>
         <a href="mailto:tdavidso@ualberta.ca">tdavidso@ualberta.ca</a>
     </p>
     <p>
+        <span class="img-circle-blue">
+            <i class="fa fa-linkedin" style="color: white;"></i>
+        </span>
         <a href="http://ca.linkedin.com/pub/tyler-davidson/50/635/511/en">LinkedIn Profile</a>
     </p>
 </div>
