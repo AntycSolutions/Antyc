@@ -52,3 +52,16 @@ docs/_build/
 
 # PyBuilder
 target/
+
+### Above is from Github
+
+# SQLite database
+db.sqlite3
+# temporary files
+*~
+# Apple
+.DS_Store
+
+# Django
+media/*
+static/*
