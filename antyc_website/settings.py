@@ -67,7 +67,7 @@ LOGIN_REDIRECT_URL = '/'
 LOGIN_URL = '/login/'
 
 # Email
-SERVER_EMAIL = 'Antyc Solutions <root@pantyc.ca>'
+SERVER_EMAIL = 'Antyc Solutions <root@antyc.ca>'
 EMAIL_USE_TLS = True
 # prod/dev
 EMAIL_HOST = 'smtp.sendgrid.net'
