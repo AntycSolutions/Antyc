@@ -6,7 +6,7 @@ BASE_DIR = os.path.dirname(os.path.dirname(os.path.dirname(__file__)))
 
 # SECURITY WARNING: keep the secret key used in production secret!
 # Get from file
-SECRET_KEY = 'om9gj@k#4!*yq^3^@1m32u!$#q2k$1=!)=vlq&c=dgtny=uz4r'
+SECRET_KEY = ''
 
 DEBUG = True
 TEMPLATE_DEBUG = DEBUG
@@ -21,11 +21,11 @@ DATABASES = {
 }
 
 # Get from file
-ADMINS = (('Andrew', 'andrew.charles@antyc.ca'),)
+ADMINS = ()
 
 # Get from file
-EMAIL_HOST_USER = 'devlperfectarchorthotics'
+EMAIL_HOST_USER = ''
 # Get from file
-EMAIL_HOST_PASSWORD = 'devldjangosendgrid'
+EMAIL_HOST_PASSWORD = ''
 
 EMAIL_SUBJECT_PREFIX = '[Antyc - Devl]'
