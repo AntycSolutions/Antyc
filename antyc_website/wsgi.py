@@ -11,5 +11,8 @@ sys.path.append(base_dir)
 
 os.environ.setdefault("DJANGO_SETTINGS_MODULE", "antyc_website.settings")
 
+if os.path.isfile(os.path.join(base_dir, "../prod")):
+    os.environ['HTTPS'] = "on"
+
 from django.core.wsgi import get_wsgi_application
 application = get_wsgi_application()
