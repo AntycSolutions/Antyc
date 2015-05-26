@@ -27,6 +27,7 @@ INSTALLED_APPS = (
     'django.contrib.messages',
     'django.contrib.staticfiles',
     'antyc',
+    'pipeline',
 )
 
 MIDDLEWARE_CLASSES = (
@@ -37,6 +38,7 @@ MIDDLEWARE_CLASSES = (
     'django.contrib.auth.middleware.AuthenticationMiddleware',
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
+    'pipeline.middleware.MinifyHTMLMiddleware',
 )
 
 ROOT_URLCONF = 'antyc_website.urls'
@@ -78,10 +80,25 @@ EMAIL_PORT = 587
 #EMAIL_HOST = 'localhost'
 #EMAIL_PORT = 1025
 
+# Django Pipeline
+STATICFILES_STORAGE = 'pipeline.storage.PipelineCachedStorage'
+STATICFILES_FINDERS = (
+    'django.contrib.staticfiles.finders.FileSystemFinder',
+    'django.contrib.staticfiles.finders.AppDirectoriesFinder',
+    'pipeline.finders.PipelineFinder',
+)
+PIPELINE_CSS = {
+    'index': {
+        'source_filenames': (
+            'css/sticky-footer.css',
+            'css/index.css',
+        ),
+        'output_filename': 'cmprsd/css/sticky-footer.css',
+    }
+}
+
 if os.path.isfile(os.path.join(BASE_DIR, "../prod")):
     from .configs.prod_settings import *
-    INSTALLED_APPS += ('pipeline',)
-    MIDDLEWARE_CLASSES += ('pipeline.middleware.MinifyHTMLMiddleware',)
 elif os.path.isfile(os.path.join(BASE_DIR, "../test")):
     from .configs.test_settings import *
 elif os.path.isfile(os.path.join(BASE_DIR, "../devl")):
