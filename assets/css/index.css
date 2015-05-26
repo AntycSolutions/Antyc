@@ -1,0 +1,12 @@
+.l-blue {
+    background-color: #007bb6; /* LinkedIn Blue */
+}
+.l-gray {
+    background-color: lightgray;
+}
+.img-circle-icon {
+    display: inline-block;
+    border-radius: 50%;
+    width: 36px;
+    height: 36px;
+}
