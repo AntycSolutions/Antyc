@@ -80,9 +80,12 @@ EMAIL_PORT = 587
 
 if os.path.isfile(os.path.join(BASE_DIR, "../prod")):
     from .configs.prod_settings import *
+    INSTALLED_APPS += ('pipeline',)
+    MIDDLEWARE_CLASSES += ('pipeline.middleware.MinifyHTMLMiddleware',)
 elif os.path.isfile(os.path.join(BASE_DIR, "../test")):
     from .configs.test_settings import *
 elif os.path.isfile(os.path.join(BASE_DIR, "../devl")):
     from .configs.devl_settings import *
+    INSTALLED_APPS += ('debug_toolbar',)
 else:
     raise Exception("Please create a settings decision file.")
