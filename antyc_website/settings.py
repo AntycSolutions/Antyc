@@ -93,7 +93,7 @@ PIPELINE_CSS = {
             'css/sticky-footer.css',
             'css/index.css',
         ),
-        'output_filename': 'cmprsd/css/sticky-footer.css',
+        'output_filename': 'css/index_all.css',
     }
 }
 
