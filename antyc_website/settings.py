@@ -96,6 +96,18 @@ PIPELINE_CSS = {
         'output_filename': 'css/index_all.css',
     }
 }
+PIPELINE_JS = {
+    'index': {
+        'source_filenames': (
+            'js/require_setup.js',
+        ),
+        'output_filename': 'js/index_all.js',
+        'template_name': 'antyc/pipeline_js.html',
+        'extra_context': {
+            'src': '//cdnjs.cloudflare.com/ajax/libs/require.js/2.1.17/require.min.js'
+        }
+    }
+}
 
 if os.path.isfile(os.path.join(BASE_DIR, "../prod")):
     from .configs.prod_settings import *
