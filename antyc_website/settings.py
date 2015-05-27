@@ -85,15 +85,15 @@ STATICFILES_STORAGE = 'pipeline.storage.PipelineCachedStorage'
 STATICFILES_FINDERS = (
     'django.contrib.staticfiles.finders.FileSystemFinder',
     'django.contrib.staticfiles.finders.AppDirectoriesFinder',
-    'pipeline.finders.PipelineFinder',
+    'pipeline.finders.PipelineFinder'
 )
 PIPELINE_CSS = {
     'index': {
         'source_filenames': (
             'css/sticky-footer.css',
-            'css/index.css',
+            'css/index.css'
         ),
-        'output_filename': 'css/index_all.css',
+        'output_filename': 'css/index_all.css'
     }
 }
 PIPELINE_JS = {
@@ -104,7 +104,8 @@ PIPELINE_JS = {
         'output_filename': 'js/index_all.js',
         'template_name': 'antyc/pipeline_js.html',
         'extra_context': {
-            'src': '//cdnjs.cloudflare.com/ajax/libs/require.js/2.1.17/require.min.js'
+            'src': '//cdnjs.cloudflare.com/ajax/libs/require.js/2.1.17/require.min.js',
+            'async': True
         }
     }
 }
