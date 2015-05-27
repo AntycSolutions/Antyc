@@ -1,12 +1,12 @@
 {% extends 'antyc/base.html' %}
 
-{% load static %}
 {% load pipeline %}
 
 {% block title %} - Welcome{% endblock %}
 
 {% block extrahead %}
-{% stylesheet 'index' %}
+{% javascript "index" %}
+{% stylesheet "index" %}
 {% endblock %}
 
 {% block content %}
