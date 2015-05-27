@@ -97,11 +97,11 @@ PIPELINE_CSS = {
     }
 }
 PIPELINE_JS = {
-    'index': {
+    'base': {
         'source_filenames': (
             'js/require_setup.js',
         ),
-        'output_filename': 'js/index_all.js',
+        'output_filename': 'js/base_all.js',
         'template_name': 'antyc/pipeline_js.html',
         'extra_context': {
             'src': '//cdnjs.cloudflare.com/ajax/libs/require.js/2.1.17/require.min.js'
