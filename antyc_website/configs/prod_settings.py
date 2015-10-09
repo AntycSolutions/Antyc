@@ -33,7 +33,7 @@ EMAIL_HOST_USER = ''
 # # Get from file
 EMAIL_HOST_PASSWORD = ''
 
-EMAIL_SUBJECT_PREFIX = '[Antyc Solutions]'
+EMAIL_SUBJECT_PREFIX = '[Antyc Solutions] '
 
 # Cache templates
 TEMPLATE_LOADERS = (
