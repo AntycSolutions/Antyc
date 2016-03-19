@@ -4,6 +4,8 @@ Django settings for antyc_website project.
 
 # Build paths inside the project like this: os.path.join(BASE_DIR, ...)
 import os
+import platform
+
 BASE_DIR = os.path.dirname(os.path.dirname(__file__))
 
 # Quick-start development settings - unsuitable for production
@@ -125,12 +127,33 @@ PIPELINE = {
     },
 }
 
+system = platform.system()
+if system == 'Windows':
+    PIPELINE['YUGLIFY_BINARY'] = (
+        os.path.normpath(
+            os.path.join(BASE_DIR, '../node_modules/.bin/yuglify.cmd')
+        )
+    )
+elif system == 'Linux':
+    PIPELINE['YUGLIFY_BINARY'] = (
+        os.path.normpath(
+            os.path.join(BASE_DIR, '../node_modules/.bin/yuglify')
+        )
+    )
+else:
+    raise Exception('Unknown platform.system')
+
+
 if os.path.isfile(os.path.join(BASE_DIR, "../prod")):
     from .configs.prod_settings import *
+
+    PIPELINE['JAVASCRIPT']['index']['source_filenames'] += \
+        'antyc/google_analytics.js'
 elif os.path.isfile(os.path.join(BASE_DIR, "../test")):
     from .configs.test_settings import *
 elif os.path.isfile(os.path.join(BASE_DIR, "../devl")):
     from .configs.devl_settings import *
+
     INSTALLED_APPS += ('debug_toolbar',)
 else:
     raise Exception("Please create a settings decision file.")
