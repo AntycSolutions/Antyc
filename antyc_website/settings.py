@@ -148,7 +148,7 @@ if os.path.isfile(os.path.join(BASE_DIR, "../prod")):
     from .configs.prod_settings import *
 
     PIPELINE['JAVASCRIPT']['index']['source_filenames'] += \
-        'antyc/google_analytics.js'
+        ('antyc/google_analytics.js',)
 elif os.path.isfile(os.path.join(BASE_DIR, "../test")):
     from .configs.test_settings import *
 elif os.path.isfile(os.path.join(BASE_DIR, "../devl")):
