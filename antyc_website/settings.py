@@ -41,6 +41,17 @@ MIDDLEWARE_CLASSES = (
     'pipeline.middleware.MinifyHTMLMiddleware',
 )
 
+TEMPLATE_CONTEXT_PROCESSORS = (
+    'django.contrib.auth.context_processors.auth',
+    'django.template.context_processors.debug',
+    'django.template.context_processors.i18n',
+    'django.template.context_processors.media',
+    'django.template.context_processors.static',
+    'django.template.context_processors.tz',
+    'django.contrib.messages.context_processors.messages',
+    'antyc_website.context_processors.site',
+)
+
 ROOT_URLCONF = 'antyc_website.urls'
 
 WSGI_APPLICATION = 'antyc_website.wsgi.application'
@@ -77,8 +88,8 @@ EMAIL_HOST = 'smtp.sendgrid.net'
 EMAIL_PORT = 587
 # dev
 # run "python -m smtpd -n -c DebuggingServer localhost:1025" first
-#EMAIL_HOST = 'localhost'
-#EMAIL_PORT = 1025
+# EMAIL_HOST = 'localhost'
+# EMAIL_PORT = 1025
 
 # Django Pipeline
 STATICFILES_STORAGE = 'pipeline.storage.PipelineCachedStorage'
@@ -87,27 +98,31 @@ STATICFILES_FINDERS = (
     'django.contrib.staticfiles.finders.AppDirectoriesFinder',
     'pipeline.finders.PipelineFinder'
 )
-PIPELINE_CSS = {
-    'index': {
-        'source_filenames': (
-            'css/sticky-footer.css',
-            'css/index.css'
-        ),
-        'output_filename': 'css/index_all.css'
-    }
-}
-PIPELINE_JS = {
-    'index': {
-        'source_filenames': (
-            'js/require_setup.js',
-        ),
-        'output_filename': 'js/index_all.js',
-        'template_name': 'antyc/pipeline_js.html',
-        'extra_context': {
-            'src': '//cdnjs.cloudflare.com/ajax/libs/require.js/2.1.17/require.min.js',
-            'async': True
-        }
-    }
+PIPELINE = {
+    'STYLESHEETS': {
+        'index': {
+            'source_filenames': (
+                'css/sticky-footer.css',
+                'css/index.css',
+            ),
+            'output_filename': 'css/index_all.css',
+        },
+    },
+    'JAVASCRIPT': {
+        'index': {
+            'source_filenames': (
+                'js/require_setup.js',
+            ),
+            'output_filename': 'js/index_all.js',
+            'template_name': 'antyc/pipeline_js.html',
+            'extra_context': {
+                'src':
+                    '//cdnjs.cloudflare.com/ajax/libs/require.js/2.1.17/'
+                    'require.min.js',
+                'async': True,
+            },
+        },
+    },
 }
 
 if os.path.isfile(os.path.join(BASE_DIR, "../prod")):
