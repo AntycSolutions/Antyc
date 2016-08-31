@@ -2,14 +2,12 @@
 Django settings for antyc_website project.
 """
 
-# Build paths inside the project like this: os.path.join(BASE_DIR, ...)
 import os
 import platform
 
-BASE_DIR = os.path.dirname(os.path.dirname(__file__))
+# Django
 
-# Quick-start development settings - unsuitable for production
-# See https://docs.djangoproject.com/en/1.6/howto/deployment/checklist/
+BASE_DIR = os.path.dirname(os.path.dirname(__file__))
 
 # SECURITY WARNING: keep the secret key used in production secret!
 SECRET_KEY = ''
@@ -20,7 +18,6 @@ TEMPLATE_DEBUG = DEBUG
 
 ALLOWED_HOSTS = []
 
-# Application definition
 INSTALLED_APPS = (
     'django.contrib.admin',
     'django.contrib.auth',
@@ -58,7 +55,6 @@ ROOT_URLCONF = 'antyc_website.urls'
 
 WSGI_APPLICATION = 'antyc_website.wsgi.application'
 
-# Databases
 DATABASES = {}
 
 # Internationalization
@@ -93,13 +89,11 @@ EMAIL_PORT = 587
 # EMAIL_HOST = 'localhost'
 # EMAIL_PORT = 1025
 
+# Third party
+
 # Django Pipeline
 STATICFILES_STORAGE = 'pipeline.storage.PipelineCachedStorage'
-STATICFILES_FINDERS = (
-    'django.contrib.staticfiles.finders.FileSystemFinder',
-    'django.contrib.staticfiles.finders.AppDirectoriesFinder',
-    'pipeline.finders.PipelineFinder'
-)
+require_js = '2.2.0'
 PIPELINE = {
     'STYLESHEETS': {
         'index': {
@@ -119,30 +113,37 @@ PIPELINE = {
             'template_name': 'antyc/pipeline_js.html',
             'extra_context': {
                 'src':
-                    '//cdnjs.cloudflare.com/ajax/libs/require.js/2.1.17/'
-                    'require.min.js',
+                    '//cdnjs.cloudflare.com/ajax/libs/require.js/' +
+                    require_js + '/require.min.js',
                 'async': True,
             },
         },
     },
 }
-
 system = platform.system()
 if system == 'Windows':
-    PIPELINE['YUGLIFY_BINARY'] = (
-        os.path.normpath(
-            os.path.join(BASE_DIR, '../node_modules/.bin/yuglify.cmd')
-        )
-    )
+    yuglify = 'yuglify.cmd'
 elif system == 'Linux':
-    PIPELINE['YUGLIFY_BINARY'] = (
-        os.path.normpath(
-            os.path.join(BASE_DIR, '../node_modules/.bin/yuglify')
-        )
-    )
+    yuglify = 'yuglify'
 else:
     raise Exception('Unknown platform.system')
+PIPELINE['YUGLIFY_BINARY'] = (
+    os.path.normpath(
+        os.path.join(BASE_DIR, '../node_modules/.bin/' + yuglify)
+    )
+)
 
+# Project
+
+VERSIONS = {
+    'bootswatch_simplex_css': '3.3.6',
+    # 'bootstrap_js': '3.3.6', # see require_setup.js
+    'html5shiv_js': '3.7.3',
+    'respond_js': '1.4.2',
+    'font_awesome_css': '4.6.3',
+    'require_js': require_js,  # see above
+    # 'jquery_js': '2.2.4', # see require_setup.js
+}
 
 if os.path.isfile(os.path.join(BASE_DIR, "../prod")):
     from .configs.prod_settings import *
