@@ -9,15 +9,6 @@ import platform
 
 BASE_DIR = path.dirname(path.dirname(__file__))
 
-# SECURITY WARNING: keep the secret key used in production secret!
-SECRET_KEY = ''
-
-# SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = True
-TEMPLATE_DEBUG = DEBUG
-
-ALLOWED_HOSTS = []
-
 INSTALLED_APPS = (
     'django.contrib.admin',
     'django.contrib.auth',
@@ -55,8 +46,6 @@ ROOT_URLCONF = 'antyc_website.urls'
 
 WSGI_APPLICATION = 'antyc_website.wsgi.application'
 
-DATABASES = {}
-
 # Internationalization
 LANGUAGE_CODE = 'en-ca'
 TIME_ZONE = 'America/Edmonton'
@@ -81,13 +70,6 @@ LOGIN_URL = '/login/'
 # Email
 SERVER_EMAIL = 'Antyc Solutions <root@antyc.ca>'
 EMAIL_USE_TLS = True
-# prod/dev
-EMAIL_HOST = 'smtp.sendgrid.net'
-EMAIL_PORT = 587
-# dev
-# run "python -m smtpd -n -c DebuggingServer localhost:1025" first
-# EMAIL_HOST = 'localhost'
-# EMAIL_PORT = 1025
 
 # Third party
 
@@ -156,5 +138,11 @@ elif path.isfile(path.join(BASE_DIR, "../devl")):
     from .configs.devl_settings import *
 
     INSTALLED_APPS += ('debug_toolbar',)
+
+    MIDDLEWARE_CLASSES = list(MIDDLEWARE_CLASSES)
+    MIDDLEWARE_CLASSES.insert(
+        5, 'debug_toolbar.middleware.DebugToolbarMiddleware'
+    )
+    MIDDLEWARE_CLASSES = tuple(MIDDLEWARE_CLASSES)
 else:
     raise Exception("Please create a settings decision file.")

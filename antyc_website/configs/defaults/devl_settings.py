@@ -22,6 +22,7 @@ DATABASES = {
 
 # Get from file
 ADMINS = ()
+MANAGERS = ADMINS
 
 # Get from file
 EMAIL_HOST_USER = ''
