@@ -65,3 +65,8 @@ db.sqlite3
 # Django
 media/*
 static/*
+
+# Env settings
+antyc_website/configs/devl_settings.py
+antyc_website/configs/test_settings.py
+antyc_website/configs/prod_settings.py

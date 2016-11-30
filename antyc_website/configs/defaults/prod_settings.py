@@ -1,8 +1,9 @@
 # Prod settings
 
 import os
+from os import path
 
-BASE_DIR = os.path.dirname(os.path.dirname(os.path.dirname(__file__)))
+BASE_DIR = path.dirname(path.dirname(path.dirname(__file__)))
 
 # SECURITY WARNING: keep the secret key used in production secret!
 # Get from file
@@ -28,9 +29,9 @@ DATABASES = {
 # Get from file
 ADMINS = ()
 
-# # Get from file
+# Get from file
 EMAIL_HOST_USER = ''
-# # Get from file
+# Get from file
 EMAIL_HOST_PASSWORD = ''
 
 EMAIL_SUBJECT_PREFIX = '[Antyc Solutions] '

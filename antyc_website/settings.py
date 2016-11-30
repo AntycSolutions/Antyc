@@ -2,12 +2,12 @@
 Django settings for antyc_website project.
 """
 
-import os
+from os import path
 import platform
 
 # Django
 
-BASE_DIR = os.path.dirname(os.path.dirname(__file__))
+BASE_DIR = path.dirname(path.dirname(__file__))
 
 # SECURITY WARNING: keep the secret key used in production secret!
 SECRET_KEY = ''
@@ -68,7 +68,7 @@ USE_TZ = True
 STATIC_URL = '/static/'
 STATIC_ROOT = BASE_DIR + '/static/'
 STATICFILES_DIRS = (
-    os.path.join(BASE_DIR, "assets"),
+    path.join(BASE_DIR, "assets"),
 )
 
 # Media files (user uploaded)
@@ -128,8 +128,8 @@ elif system == 'Linux':
 else:
     raise Exception('Unknown platform.system')
 PIPELINE['YUGLIFY_BINARY'] = (
-    os.path.normpath(
-        os.path.join(BASE_DIR, '../node_modules/.bin/' + yuglify)
+    path.normpath(
+        path.join(BASE_DIR, '../node_modules/.bin/' + yuglify)
     )
 )
 
@@ -145,14 +145,14 @@ VERSIONS = {
     # 'jquery_js': '2.2.4', # see require_setup.js
 }
 
-if os.path.isfile(os.path.join(BASE_DIR, "../prod")):
+if path.isfile(path.join(BASE_DIR, "../prod")):
     from .configs.prod_settings import *
 
     PIPELINE['JAVASCRIPT']['index']['source_filenames'] += \
         ('antyc/google_analytics.js',)
-elif os.path.isfile(os.path.join(BASE_DIR, "../test")):
+elif path.isfile(path.join(BASE_DIR, "../test")):
     from .configs.test_settings import *
-elif os.path.isfile(os.path.join(BASE_DIR, "../devl")):
+elif path.isfile(path.join(BASE_DIR, "../devl")):
     from .configs.devl_settings import *
 
     INSTALLED_APPS += ('debug_toolbar',)

@@ -1,2 +1,2 @@
-django==1.8.11
+django==1.8.16
 django-pipeline==1.6.7
